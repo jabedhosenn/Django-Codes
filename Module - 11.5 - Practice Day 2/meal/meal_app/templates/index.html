@@ -1,0 +1,87 @@
+{% extends 'base.html'%} {% block content %}
+
+<!-- nav start -->
+<section>
+  <nav class="navbar navbar-expand-lg container">
+    <div class="container-fluid">
+      <h1>
+        <a class="navbar-brand fw-bold fs-1" href="#"
+          ><span class="text-secondary-emphasis">Daily </span
+          ><span class="text-warning">Meal</span></a
+        >
+      </h1>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-2 text-white">
+          <li class="nav-item">
+            <a
+              class="nav-link active text-secondary-emphasis"
+              aria-current="page"
+              href="#"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary-emphasis" href="#">Items</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary-emphasis" href="#">Menu</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>
+<!-- nav end -->
+
+<!-- card start -->
+<div class="container mt-5 p-5 border border-success border border-3 rounded">
+  <h1 class="text-center fw-bold">Meals</h1>
+  <hr />
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for meal in meals %}
+    <div class="col">
+      <div class="card">
+        <img src="{{meal.strMealThumb}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{meal.strMeal}}</h5>
+          <p class="card-text">
+            There are so many ways to describe food, including taste, texture,
+            preparation style, and more. Whether you’re looking to spice up your
+            food related vocabulary or you’re simply looking for the right words
+            to describe food you’ve eaten or prepared recently, there are plenty
+            of options to consider. Learning new ways to describe food can help
+            you find the perfect culinary terms.
+          </p>
+          <h5 class="card-title">{{meal.idMeal}}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- card end -->
+
+<!-- footer start -->
+<hr class="mt-5" />
+<footer class="py-5 nt-5">
+  <div class="container text-secondary-emphasis text-center">
+    <p class="display-5 mb-3">Daily <span class="text-warning">Meal</span></p>
+    <small class="text-secondary-emphasis-50"
+      >&copy; 2024 - Daily Meal. all rights reserved.</small
+    >
+  </div>
+</footer>
+<!-- footer end -->
+
+{% endblock %}

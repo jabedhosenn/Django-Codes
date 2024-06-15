@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="mt-3">
+    <h2 class="text-center">All Musician List</h2>
+<div class="table border p-3">
+    <table class="table align-middle">
+        <thead>
+          <tr >
+            <th class="text-info" scope="col">ID</th>
+            <th class="text-info" scope="col">Musician Name</th>
+            <th class="text-info" scope="col">Phone</th>
+            <th class="text-info" scope="col">Email</th>
+            <th class="text-info" scope="col">Instrument Type</th>
+            <th class="text-info" scope="col">Albam Name</th>
+            <th class="text-info" scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+            {% for musician in musicians %}
+            <tr >
+                <th scope="row">{{musician.id}}</th>
+                <td>
+                  <a href="{% url "details_musician" musician.id %}" class="text-info text-decoration-none">
+                    {{musician.full_name}}
+                  </a>
+                </td>
+                <td>{{musician.phone}}</td>
+                <td>{{musician.email}}</td>
+                <td>{{musician.instrument_type}}</td>
+                <td>
+                    {% for album in musician.albums.all %}
+                    '{{album.name}}'
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="{% url "update_musician" musician.id %}">EDIT</a>
+                    <a class="btn btn-danger" href="{% url "delete_musician" musician.id %}">DELETE</a>
+                </td>
+              </tr>
+
+            {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+</div>
+
+{% endblock content %}
